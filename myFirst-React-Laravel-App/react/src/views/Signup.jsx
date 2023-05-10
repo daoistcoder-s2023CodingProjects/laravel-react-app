@@ -49,7 +49,6 @@ export default function Signup() {
                             <p key={key}>{errors[key][0]}</p>
                         ))}
                     </div>
-
                     }
                     <input ref={nameRef} placeholder="Full Name" />
                     <input ref={emailRef} type="email" placeholder="Email Address" />
