@@ -35,6 +35,7 @@ class AuthController extends Controller
                 'message' => 'Provided email address or password is incorrect'
             ], 422);
         }
+        
         /** @var User $user */
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
