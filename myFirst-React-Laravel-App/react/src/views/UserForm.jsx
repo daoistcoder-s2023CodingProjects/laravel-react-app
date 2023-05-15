@@ -29,6 +29,9 @@ export default function userForm() {
                 })
         }, [])
     }
+        const onSubmit = (ev) => {
+            ev.preventDefault()
+        }
 
 
     return (
@@ -48,10 +51,10 @@ export default function userForm() {
             }
             {!loading &&
                 <form onSubmit={onSubmit}>
-                    <input placeholder='Name' />
-                    <input placeholder='Email' />
-                    <input placeholder='Password' />
-                    <input placeholder='Password Confirmation' />
+                    <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder='Name' />
+                    <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder='Email' />
+                    <input onChange={ev => setUser({...user, password: ev.target.value})} placeholder='Password' />
+                    <input onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder='Password Confirmation' />
                 </form>
             }
         </div>
