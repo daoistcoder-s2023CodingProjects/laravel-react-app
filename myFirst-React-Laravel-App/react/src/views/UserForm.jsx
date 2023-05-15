@@ -1,11 +1,12 @@
 import {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 import axiosClient from '../axios-client';
 
 export default function userForm() {
 
     const {id} = useParams()
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [errors, setErrors] = useState(null)
     const [user, setUser] = useState({
@@ -22,7 +23,6 @@ export default function userForm() {
             axiosClient.get(`/users/${id}`)
                 .then(({data}) =>{
                     setLoading(false)
-                    debugger;
                     setUser(data)
                 })
                 .catch(() => {
@@ -32,6 +32,31 @@ export default function userForm() {
     }
         const onSubmit = (ev) => {
             ev.preventDefault()
+            if (user.id) {
+                axiosClient.put(`/users/${user.id}`. user)
+                    .then(() => {
+                        //TODO show notification
+                        navigate('/users')
+                    })
+                    .catch (err => {
+                        const response = err.response;
+                        if (response && response.status === 422) {
+                            setErrors(response.data.errors);
+                        }
+                    })
+            } else {
+                axiosClient.post(`/users/`. user)
+                    .then(() => {
+                        //TODO show notification
+                        navigate('/users')
+                    })
+                    .catch (err => {
+                        const response = err.response;
+                        if (response && response.status === 422) {
+                            setErrors(response.data.errors);
+                        }
+                    })
+            }
         }
 
 
