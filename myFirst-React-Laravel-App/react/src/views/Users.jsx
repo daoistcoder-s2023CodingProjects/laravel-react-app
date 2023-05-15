@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+
+// import Link from "react-router-dom";
 
 import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client"
@@ -26,8 +28,11 @@ export default function Users() {
 
     return (
         <div>
-            Users
+            <div>
+                Users
+            
+            </div>
         </div>
-    )
+        )
 
 }
