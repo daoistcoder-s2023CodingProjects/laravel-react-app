@@ -7,6 +7,7 @@ export default function userForm() {
 
     const {id} = useParams()
     const [loading, setLoading] = useState(false)
+    const [errors, setErrors] = useState(null);
     const [user, setUser] = useState({
         id: null,
         name: '',
@@ -38,6 +39,13 @@ export default function userForm() {
             {loading && (
                 <div className='text-center'>Loading...</div>
             )}
+            {errors && 
+            <div className="alert">
+                {Object.keys(errors).map(key => (
+                    <p key={key}>{errors[key][0]}</p>
+                ))}
+            </div>
+            }
         </div>
         </>
     )
