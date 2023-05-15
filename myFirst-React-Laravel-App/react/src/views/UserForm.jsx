@@ -17,7 +17,7 @@ export default function userForm() {
         password_confirmation: ''
     })
 
-    const {setNotification} = useStateContext
+    const {setNotification} = useStateContext()
     const [errors, setErrors] = useState(null)
     const [loading, setLoading] = useState(false)
 
