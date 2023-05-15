@@ -31,8 +31,14 @@ export default function userForm() {
 
 
     return (
-        <div>
-            User Form
+        <>
+        {used.id && <h1>Update User: {user.name}</h1>}
+        {!user.id && <h1>New User</h1>}
+        <div className='card animated fadeInDown'>
+            {loading && (
+                <div className='text-center'>Loading...</div>
+            )}
         </div>
+        </>
     )
 }
