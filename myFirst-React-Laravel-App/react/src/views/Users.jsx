@@ -55,14 +55,16 @@ export default function Users() {
                         <th>Create Date</th>
                         <th>Actions</th>
                     </thead>
-                    {loading && <tbody>
-                                    <tr>
-                                        <td colSpan="5" className="text-center">
-                                            Loading...
-                                        </td>
-                                    </tr>
-                                 </tbody>
+                    {loading && 
+                    <tbody>
+                        <tr>
+                            <td colSpan="5" className="text-center">
+                                Loading...
+                            </td>
+                        </tr>
+                    </tbody>
                     }
+                    {!loading && 
                     <tbody>
                         {users.map(u => (
                             <tr>
@@ -78,6 +80,7 @@ export default function Users() {
                             </tr>
                         ))}
                     </tbody>
+                    }
                 </table>
             </div>
         </div>
