@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->group(function() {
         return $request->user();
     });
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::apiResource()
 });
 
 // Route::get('/romeTest', function(){
