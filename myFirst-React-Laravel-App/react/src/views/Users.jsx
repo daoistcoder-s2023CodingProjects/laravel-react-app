@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client"
+import { Link } from "react-router-dom";
 
 export default function Users() {
     const [users, setUsers] = useState([]);
@@ -28,11 +29,10 @@ export default function Users() {
 
     return (
         <div>
-            <div>
-                Users
-            
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <h1>Users</h1>
+                <Link to="/users/new" className="btn-add">Add new</Link>           
             </div>
         </div>
         )
-
 }
