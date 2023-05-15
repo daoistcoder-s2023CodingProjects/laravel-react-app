@@ -7,7 +7,7 @@ export default function userForm() {
 
     const {id} = useParams()
     const [loading, setLoading] = useState(false)
-    const [errors, setErrors] = useState(null);
+    const [errors, setErrors] = useState(null)
     const [user, setUser] = useState({
         id: null,
         name: '',
@@ -45,6 +45,14 @@ export default function userForm() {
                     <p key={key}>{errors[key][0]}</p>
                 ))}
             </div>
+            }
+            {!loading &&
+                <form onSubmit={onSubmit}>
+                    <input placeholder='Name' />
+                    <input placeholder='Email' />
+                    <input placeholder='Password' />
+                    <input placeholder='Password Confirmation' />
+                </form>
             }
         </div>
         </>
