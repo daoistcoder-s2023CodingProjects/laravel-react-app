@@ -55,6 +55,14 @@ export default function Users() {
                         <th>Create Date</th>
                         <th>Actions</th>
                     </thead>
+                    {loading && <tbody>
+                                    <tr>
+                                        <td colSpan="5" className="text-center">
+                                            Loading...
+                                        </td>
+                                    </tr>
+                                 </tbody>
+                    }
                     <tbody>
                         {users.map(u => (
                             <tr>
