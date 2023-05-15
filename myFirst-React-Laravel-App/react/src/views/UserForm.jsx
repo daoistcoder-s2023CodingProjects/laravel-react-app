@@ -4,11 +4,8 @@ import {useNavigate, useParams} from 'react-router-dom';
 import axiosClient from '../axios-client';
 
 export default function userForm() {
-
-    const {id} = useParams()
     const navigate = useNavigate()
-    const [loading, setLoading] = useState(false)
-    const [errors, setErrors] = useState(null)
+    const {id} = useParams()
     const [user, setUser] = useState({
         id: null,
         name: '',
@@ -17,11 +14,16 @@ export default function userForm() {
         password_confirmation: ''
     })
 
+    const [errors, setErrors] = useState(null)
+    const [loading, setLoading] = useState(false)
+
+
+
     if (id) {
         useEffect(() => {
             setLoading(true)
             axiosClient.get(`/users/${id}`)
-                .then(({data}) =>{
+                .then(({data}) => {
                     setLoading(false)
                     setUser(data)
                 })
@@ -30,34 +32,34 @@ export default function userForm() {
                 })
         }, [])
     }
-        const onSubmit = (ev) => {
-            ev.preventDefault()
-            if (user.id) {
-                axiosClient.put(`/users/${user.id}`. user)
-                    .then(() => {
-                        //TODO show notification
-                        navigate('/users')
-                    })
-                    .catch (err => {
-                        const response = err.response;
-                        if (response && response.status === 422) {
-                            setErrors(response.data.errors);
-                        }
-                    })
-            } else {
-                axiosClient.post(`/users/`. user)
-                    .then(() => {
-                        //TODO show notification
-                        navigate('/users')
-                    })
-                    .catch (err => {
-                        const response = err.response;
-                        if (response && response.status === 422) {
-                            setErrors(response.data.errors);
-                        }
-                    })
-            }
+    const onSubmit = (ev) => {
+        ev.preventDefault()
+        if (user.id) {
+            axiosClient.put(`/users/${user.id}`, user)
+                .then(() => {
+                    //TODO show notification
+                    navigate('/users')
+                })
+                .catch (err => {
+                    const response = err.response;
+                    if (response && response.status === 422) {
+                        setErrors(response.data.errors);
+                    }
+                })
+        } else {
+            axiosClient.post(`/users/`. user)
+                .then(() => {
+                    //TODO show notification
+                    navigate('/users')
+                })
+                .catch (err => {
+                    const response = err.response;
+                    if (response && response.status === 422) {
+                        setErrors(response.data.errors);
+                    }
+                })
         }
+    }
 
 
     return (
