@@ -22,6 +22,7 @@ export default function userForm() {
             axiosClient.get(`/users/${id}`)
                 .then(({data}) =>{
                     setLoading(false)
+                    debugger;
                     setUser(data)
                 })
                 .catch(() => {
@@ -36,7 +37,7 @@ export default function userForm() {
 
     return (
         <>
-        {used.id && <h1>Update User: {user.name}</h1>}
+        {user.id && <h1>Update User: {user.name}</h1>}
         {!user.id && <h1>New User</h1>}
         <div className='card animated fadeInDown'>
             {loading && (
@@ -55,6 +56,7 @@ export default function userForm() {
                     <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder='Email' />
                     <input onChange={ev => setUser({...user, password: ev.target.value})} placeholder='Password' />
                     <input onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder='Password Confirmation' />
+                    <button className='btn'>Save</button>
                 </form>
             }
         </div>
