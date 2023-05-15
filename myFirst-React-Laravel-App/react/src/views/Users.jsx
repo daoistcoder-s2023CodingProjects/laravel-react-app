@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 
+import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client"
 
 export default function Users() {
@@ -7,7 +8,7 @@ export default function Users() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-
+        getUsers();
     }, [])
 
     const getUsers = () => {
