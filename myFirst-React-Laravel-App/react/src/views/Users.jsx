@@ -14,6 +14,18 @@ export default function Users() {
         getUsers();
     }, [])
 
+    const onDelete = (u) => {
+        if (!window.confirm("Are you sure want to delete this user?")) {
+            return
+        }
+
+        axiosClient.delete(`/users/${u.id}`)
+            .then(() => {
+                //TODO show notification
+                
+            })
+    }
+
     const getUsers = () => {
         setLoading(true)
         axiosClient.get('/users')
