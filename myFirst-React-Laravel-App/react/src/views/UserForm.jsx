@@ -47,7 +47,7 @@ export default function userForm() {
                     }
                 })
         } else {
-            axiosClient.post(`/users/`. user)
+            axiosClient.post(`/users/`, user)
                 .then(() => {
                     //TODO show notification
                     navigate('/users')
@@ -80,9 +80,9 @@ export default function userForm() {
             {!loading &&
                 <form onSubmit={onSubmit}>
                     <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder='Name' />
-                    <input value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder='Email' />
-                    <input onChange={ev => setUser({...user, password: ev.target.value})} placeholder='Password' />
-                    <input onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder='Password Confirmation' />
+                    <input type='email' value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder='Email' />
+                    <input type='password' onChange={ev => setUser({...user, password: ev.target.value})} placeholder='Password' />
+                    <input type='password' onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder='Password Confirmation' />
                     <button className='btn'>Save</button>
                 </form>
             }
