@@ -22,7 +22,7 @@ export default function Users() {
         axiosClient.delete(`/users/${u.id}`)
             .then(() => {
                 //TODO show notification
-                
+                getUsers()
             })
     }
 
@@ -65,7 +65,7 @@ export default function Users() {
                                 <td>
                                     <Link className="btn-edit" to={'/users/'+u.id}>Edit</Link>
                                     &nbsp;
-                                    <button className="btn-delete">Delete</button>
+                                    <button onClick={ev => onDelete(u)} className="btn-delete">Delete</button>
                                 </td>
                             </tr>
                         ))}
